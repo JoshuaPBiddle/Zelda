@@ -249,10 +249,76 @@ private static class Animate implements Runnable {
 }
 
 private static class AudioLooper implements Runnable {
+   public void run() {
+       while (endGame == false) {
+           Long curTime = new Long (System.currentTimeMillis());
+           if (curTime - lastAudioStart > audioLifeTime) {
+               playAudio(backgroundState);
+           }
+       }
+   }
+}
+
+private static void playAudio(String backgroundState) {
     try {
         clip.stop();
+    } catch (Exception e) {
+
     }
-    catch (Exception e) {
+    try {
+        if (backgroundState.substring(0, 2).equals("KI")) {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(new File("KI.wav").getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.open(ais);
+            clip.start();
+            lastAudioStart = System.currentTimeMillis();
+            audioLifetime = new Long(78000);
+        } else if (backgroundState.substring(0, 2).equals("TC")) {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(new File("TC.wav").getAbsoluteFile());
+            clip = AudioSystem.getClip();
+            clip.opne(ais);
+            clip.start();
+            lastAudioStart = System.currentTimeMillis();
+            audioLifetime = new Long(191000);
+        }
+    } catch (Exception e) {
+
+    }
+}
+
+private static String bgWrap(String input, int wrap) {
+    String ret = input;
+    if(wrap == 0) {
+
+    }
+    else if (wrap == 1) {
+        int xcoord = Integer.parseInt(input.substring(2,4));
+        int ycoord = Integer.parseInt(input.substring(4,6));
+
+        xcoord = xcoord + 1;
+
+        if(xcoord < 10) {
+            ret = input.substring(0, 2) + "0" + xcoord;
+        }
+        else {
+            ret = input.substring(0, 2) + "0" + xcoord;
+        }
+        if (ycoord < 10) {
+            ret = ret + "0" + ycoord;
+        }
+        else {
+            ret = ret + ycoord;
+        }
+    }
+    else if (wrap == 2) {
+        int xcoord = Integer.parseInt(input.substring(2,4));
+        int ycoord = Integer.parseInt(input.substring(4,6));
+
+        xcoord = xcoord - 1;
+
+        if(xcoord < 10) {
+            ret = input.substring(0, 2) + "0" + xcoord;
+        } //end of 117
 
     }
 }
