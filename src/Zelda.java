@@ -311,14 +311,118 @@ private static String bgWrap(String input, int wrap) {
         }
     }
     else if (wrap == 2) {
-        int xcoord = Integer.parseInt(input.substring(2,4));
-        int ycoord = Integer.parseInt(input.substring(4,6));
+        int xcoord = Integer.parseInt(input.substring(2, 4));
+        int ycoord = Integer.parseInt(input.substring(4, 6));
 
         xcoord = xcoord - 1;
 
-        if(xcoord < 10) {
+        if (xcoord < 10) {
             ret = input.substring(0, 2) + "0" + xcoord;
-        } //end of 117
+        } else {
+            ret = input.substring(0, 2) + xcoord;
+        }
+        if (ycoord < 10) {
+            ret = ret + "0" + ycoord;
+        } else {
+            ret = ret + ycoord;
+        }
+    }
+    else if (wrap == 3) {
+        int xcoord = Integer.parseInt(input.substring(2, 4));
+        int ycoord = Integer.parseInt(input.substring(4, 6));
 
+        ycoord = ycoord + 1;
+        if (xcoord < 10) {
+            ret = input.substring(0, 2) + "0" + xcoord;
+        } else {
+            ret = input.substring(0, 2) + xcoord;
+        }
+        if (ycoord < 10) {
+            ret = ret + "0" + ycoord;
+        }
+        else {
+            ret = ret + ycoord;
+        }
+    }
+    else if (wrap == 4) {
+        int xcoord = Integer.parseInt(input.substring(2, 4));
+        int ycoord = Integer.parseInt(input.substring(4, 6));
+
+        ycoord = ycoord - 1;
+        if (xcoord < 10) {
+            ret = input.substring(0,2) + "0" + xcoord;
+        } else {
+            ret = input.substring(0,2) + xcoord;
+        }
+        if (ycoord < 10) {
+            ret = ret + "0" + ycoord;
+        } else {
+            ret = ret + ycoord;
+        }
+    }
+    return ret;
+}
+
+private static class PlayerMover implements Runnable {
+    public PlayerMover() {
+        velocityStep = 3;
+    }
+    public void run() {
+        while (endgame == false) {
+            try {
+                Thread.sleep(10);
+            }
+            catch(InterruptedException e) {
+
+            }
+            if (upPressed || downPressed || leftPressed || rightPressed) {
+                p1velocity = velocityStep;
+                if (upPressed) {
+                    if (leftPressed) {
+                        p1.setInternalAngle(fiveQuartersPi);
+                    } else if (rightPressed) {
+                        p1.setInternalAngle(5.49779);
+                    } else {
+                        p1.setInternalAngle(threeHalvesPi);
+                    }
+                }
+                if (downPressed) {
+                    if (leftPressed) {
+                        p1.setInternalAngle(2.35619);
+                    }else if (rightPressed) {
+                        p1.setInternalAngle(quarterPi);
+                    } else {
+                        p1.setInternalAngle(halfPi);
+                    }
+                }
+                if (leftPressed) {
+                    if (upPressed) {
+                        p1.setInternalAngle(fiveQuartersPi);
+                    } else if (downPressed) {
+                        p1.setInternalAngle(threeQuartersPi);
+                    } else {
+                        p1.setInternalAngle(pi);
+                    }
+                }
+                if (rightPressed) {
+                    if (upPressed) {
+                        p1.setInternalAngle(5.49779);
+                    }
+                    else if (downPressed) {
+                        p1.setInternalAngle(quarterPi);
+                    }
+                    else {
+                        p1.setInternalAngle(0.0);
+                    }
+                }
+            } else {
+                p1Velocity = 0.0;
+                p1.setInternalAngle(threeHalvesPi);
+            }
+
+            p1.updateBounce();
+            p1.move(p1Velocity * Math.cos(p1.getInternalAngle(), p1Velocity * Math.sin(p1.getInternalAngle())));
+            //pg121
+        }
     }
 }
