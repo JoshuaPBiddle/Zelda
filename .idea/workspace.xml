@@ -68,6 +68,7 @@
       <updated>1644874127533</updated>
       <workItem from="1645037332380" duration="1748000" />
       <workItem from="1645043262909" duration="19000" />
+      <workItem from="1645059745544" duration="951000" />
     </task>
     <servers />
   </component>
@@ -84,7 +85,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
