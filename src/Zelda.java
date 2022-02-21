@@ -67,7 +67,7 @@ public class Zelda {
             for (int i = 0; i < ydimKI; i++) {
                 Vector<BufferedImage> temp = new Vector<BufferedImage>();
                 for (int j = 0; j < xdimKI; j++) {
-                    BufferedImage tempImg = ImageIO.read(new File("blank.png"));
+                    BufferedImage tempImg = ImageIO.read(new File("intro1.png"));
                     temp.addElement(tempImg);
                 }
                 backgroundKI.addElement(temp);

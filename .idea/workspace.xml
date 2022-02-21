@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffbe3908-4aef-4485-81b8-32fbace7a9e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/bottleGrotto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/five.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/four.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gopongaSwamp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intro1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/one.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seven.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/six.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/three.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/two.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temple_BottleGrotto.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +68,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jpbid\IdeaProjects\Zelda" />
       <recent name="C:\Users\jpbid\Zelda" />
     </key>
   </component>
@@ -83,7 +97,8 @@
       <workItem from="1645037332380" duration="1748000" />
       <workItem from="1645043262909" duration="19000" />
       <workItem from="1645059745544" duration="1380000" />
-      <workItem from="1645414101851" duration="2810000" />
+      <workItem from="1645414101851" duration="3220000" />
+      <workItem from="1645418126522" duration="4556000" />
     </task>
     <servers />
   </component>
