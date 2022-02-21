@@ -58,6 +58,20 @@
       <recent name="C:\Users\jpbid\Zelda" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Zelda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Zelda" />
+      <module name="Zelda" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Zelda" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -68,7 +82,8 @@
       <updated>1644874127533</updated>
       <workItem from="1645037332380" duration="1748000" />
       <workItem from="1645043262909" duration="19000" />
-      <workItem from="1645059745544" duration="951000" />
+      <workItem from="1645059745544" duration="1380000" />
+      <workItem from="1645414101851" duration="2810000" />
     </task>
     <servers />
   </component>

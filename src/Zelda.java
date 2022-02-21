@@ -56,8 +56,8 @@ public class Zelda {
         p1originalX = (double) XOFFSET + ((double) WINWIDTH / 2.0) - (p1width / 2.0);
         p1originalY = (double) YOFFSET + ((double) WINWIDTH / 2.0) - (p1width / 2.0);
         level = 3;
-        audioLifeTime = new Long(78000);
-        dropLifeLifeTime = new Long(1000);
+        audioLifeTime = 78000L;
+        dropLifeTime = 1000L;
 
         try {
             xdimKI = 16;
@@ -66,14 +66,14 @@ public class Zelda {
 
             for (int i = 0; i < ydimKI; i++) {
                 Vector<BufferedImage> temp = new Vector<BufferedImage>();
-                for (int j = 0; j < xkdimKI; j++) {
+                for (int j = 0; j < xdimKI; j++) {
                     BufferedImage tempImg = ImageIO.read(new File("blank.png"));
                     temp.addElement(tempImg);
                 }
                 backgroundKI.addElement(temp);
             }
 
-            for (int i = 0; i < backroundKI.size(); i++) {
+            for (int i = 0; i < backgroundKI.size(); i++) {
                 for (int j = 0; j < backgroundKI.elementAt(i).size(); j++) {
                     if ((j == 5 && i == 10) || (j == 5 && i == 11) || (j == 6 && i == 10) ||
                             (j == 6 && i == 11) || (j == 7 && i == 10) ||
@@ -209,7 +209,7 @@ public class Zelda {
             bluePigEnemies = new Vector<ImageObject>();
             bluePigEnemy = new Vector<BufferedImage>();
             bluePigEnemy.addElement(ImageIO.read(new File("BPB1.png")));
-            bluePigEnemey.addElement(ImageIO.read(new File("BPB2.png")));
+            bluePigEnemy.addElement(ImageIO.read(new File("BPB2.png")));
             bluePigEnemy.addElement(ImageIO.read(new File("BPF1.png")));
             bluePigEnemy.addElement(ImageIO.read(new File("BPF2.png")));
             bluePigEnemy.addElement(ImageIO.read(new File("BPL1.png")));
@@ -246,8 +246,8 @@ public class Zelda {
 
     private static class AudioLooper implements Runnable {
         public void run() {
-            while (endGame == false) {
-                Long curTime = new Long(System.currentTimeMillis());
+            while (endgame == false) {
+                Long curTime = System.currentTimeMillis();
                 if (curTime - lastAudioStart > audioLifeTime) {
                     playAudio(backgroundState);
                 }
@@ -268,14 +268,14 @@ public class Zelda {
                 clip.open(ais);
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
-                audioLifetime = new Long(78000);
+                audioLifeTime = 78000L;
             } else if (backgroundState.substring(0, 2).equals("TC")) {
                 AudioInputStream ais = AudioSystem.getAudioInputStream(new File("TC.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
-                clip.opne(ais);
+                clip.open(ais);
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
-                audioLifetime = new Long(191000);
+                audioLifeTime = 191000L;
             }
         } catch (Exception e) {
 
@@ -365,7 +365,7 @@ public class Zelda {
 
                 }
                 if (upPressed || downPressed || leftPressed || rightPressed) {
-                    p1velocity = velocityStep;
+                    p1Velocity = velocityStep;
                     if (upPressed) {
                         if (leftPressed) {
                             p1.setInternalAngle(fiveQuartersPi);
@@ -408,7 +408,7 @@ public class Zelda {
                 }
 
                 p1.updateBounce();
-                p1.move(p1Velocity * Math.cos(p1.getInternalAngle(), p1Velocity * Math.sin(p1.getInternalAngle())));
+                p1.move(p1Velocity * Math.cos(p1.getInternalAngle()), p1Velocity * Math.sin(p1.getInternalAngle()));
                 int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
                 backgroundState = bgWrap(backgroundState, wrap);
                 if (wrap != 0) {
@@ -443,7 +443,7 @@ public class Zelda {
 
         public void run() {
             Random randomNumbers = new Random(LocalTime.now().getNano());
-            while (endGame == false) {
+            while (endgame == false) {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
@@ -475,7 +475,7 @@ public class Zelda {
                                 Math.cos(bluePigEnemies.elementAt(i).getInternalAngle()), bluePigVelocity *
                                 Math.sin(bluePigEnemies.elementAt(i).getInternalAngle()));
                     }
-                    for (int i = 0; i < bubblebossEnemies.size(); i++) {
+                    for (int i = 0; i < bubbleBossEnemies.size(); i++) {
 
                     }
                 } catch (java.lang.NullPointerException jlnpe) {
@@ -496,7 +496,7 @@ public class Zelda {
                 if (availableToDropLife && p1.getDropLife() > 0) {
                     int newLife = p1.getLife() - p1.getDropLife();
                     p1.setDropLife(0);
-                    availableToDropLife - false;
+                    availableToDropLife = false;
 
                     lastDropLife = System.currentTimeMillis();
                     p1.setLife(newLife);
@@ -504,7 +504,7 @@ public class Zelda {
                     try {
                         AudioInputStream ais = AudioSystem.getAudioInputStream(new File("hurt.wav").getAbsoluteFile());
                         Clip hurtclip = AudioSystem.getClip();
-                        hurtClip.open(ais);
+                        hurtclip.open(ais);
                         hurtclip.start();
                     } catch (Exception e) {
 
@@ -526,14 +526,14 @@ public class Zelda {
                 // check player against doors in given scenes
                 if (backgroundState.substring(0, 6).equals("KIO511")) {
                     if (collisionOccurs(p1, doorKItoTC)) {
-                        p1.moveTo(p1originalX, p1originalY);
+                        p1.moveto(p1originalX, p1originalY);
                         backgroundState = "TC0305";
                         clip.stop();
                         playAudio(backgroundState);
                     }
                 } else if (backgroundState.substring(0, 6).equals("TC0305")) {
-                    if (collisionOccurs(p1.doorTCtoKI)) {
-                        p1.moveTo(p1originalX, p1originalY);
+                    if (collisionOccurs(p1,doorTCtoKI)) {
+                        p1.moveto(p1originalX, p1originalY);
                         backgroundState = "KI0511";
                         clip.stop();
                         playAudio(backgroundState);
@@ -588,15 +588,15 @@ public class Zelda {
     // TODO make one lockrotate function, see pg. 126 for specifics
 
     private static void lockRotateObjAroundObjBottom(ImageObject objOuter, ImageObject objInner, double dist) {
-        objOuter.moveTo(objInner.getX() + (dist + objInner.getWidth() / 2.0) * Math.cos(-objInner.getAngle() + pi / 2.0)
+        objOuter.moveto(objInner.getX() + (dist + objInner.getWidth() / 2.0) * Math.cos(-objInner.getAngle() + pi / 2.0)
                 + objOuter.getWidth() / 2.0, objInner.getY() + (dist + objInner.getHeight() / 2.0)
                 * Math.sin(-objInner.getAngle() + pi / 2.0) + objOuter.getHeight() / 2.0);
-        objOuter.setAngle(onjInner.getAngle());
+        objOuter.setAngle(objInner.getAngle());
     }
 
     // dist is a distance between the two objects at the top of the inner object.
     private static void lockRotateObjAboutObjTop(ImageObject objOuter, ImageObject objInner, double dist) {
-        objOuter.moveTo(objInner.getX() + objOuter.getWidth() + (objInner.getWidth() / 2.0 +
+        objOuter.moveto(objInner.getX() + objOuter.getWidth() + (objInner.getWidth() / 2.0 +
                         (dist + objInner.getWidth() / 2.0) * Math.cos(objInner.getAngle() + pi / 2.0)) / 2.0,
                 objInner.getY() - objOuter.getHeight() + (dist + objInner.getHeight() / 2.0) *
                         Math.sin(objInner.getAngle() / 2.0));
@@ -612,7 +612,7 @@ public class Zelda {
 
     private static AffineTransformOp spinImageObject(ImageObject obj) {
         AffineTransform at = AffineTransform.getRotateInstance(-obj.getInternalAngle(),
-                obj.getWidth() / 2.0, obj.getHeight(). 2.0);
+                obj.getWidth() / 2.0, obj.getHeight(), 2.0);
         AffineTransformOp atop = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         return atop;
     }
@@ -625,7 +625,7 @@ public class Zelda {
             int i = Integer.parseInt(backgroundState.substring(4, 6));
             int j = Integer.parseInt(backgroundState.substring(2, 4));
             if (i < backgroundKI.size()) {
-                if (j < backgroungKI.elementAt(i).size()) {
+                if (j < backgroundKI.elementAt(i).size()) {
                     g2D.drawImage(backgroundKI.elementAt(i).elementAt(j), XOFFSET, YOFFSET, null);
                 }
             }
@@ -635,7 +635,7 @@ public class Zelda {
             int i = Integer.parseInt(backgroundState.substring(4, 6));
             int j = Integer.parseInt(backgroundState.substring(2, 4));
             if (i < backgroundKI.size()) {
-                if (j < backgroungTC.elementAt(i).size()) {
+                if (j < backgroundTC.elementAt(i).size()) {
                     g2D.drawImage(backgroundTC.elementAt(i).elementAt(j), XOFFSET, YOFFSET, null);
                 }
             }
@@ -643,7 +643,7 @@ public class Zelda {
     }
 
     private static void playerDraw() {
-        Graphics g = appFrame.getGraohics();
+        Graphics g = appFrame.getGraphics();
         Graphics g2D = (Graphics2D) g;
 
         if (upPressed || downPressed || leftPressed || rightPressed) {
@@ -678,7 +678,7 @@ public class Zelda {
                 p1.updateCurrentFrame();
             }
 
-            if (rigthPressed) {
+            if (rightPressed) {
                 if (p1.getCurrentFrame() == 0) {
                     g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(6), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 } else if (p1.getCurrentFrame() == 1) {
@@ -736,13 +736,13 @@ public class Zelda {
                         leftScale * i + leftOffset + interiorOffset + XOFFSET, interiorOffset + YOFFSET, null);
             } else {
                 g2D.drawImage(rotateImageObject(p1).filter(rightHeart, null),
-                        leftScale * i + rightOffset - helfInteriorOffset + XOFFSET, interiorOffset + YOFFSET, null);
+                        leftScale * i + rightOffset - halfInteriorOffset + XOFFSET, interiorOffset + YOFFSET, null);
             }
         }
     }
 
     private static void enemiesDraw() {
-        Graphics g = appFrame.setGraphics();
+        Graphics g = appFrame.getGraphics();
         Graphics2D g2D = (Graphics2D) g;
 
         for (int i = 0; i < bluePigEnemies.size(); i++) {
@@ -758,11 +758,11 @@ public class Zelda {
         if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - internalAngleSubtract) < 1.0) {
             if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
                 g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(imageIndex1),
-                                null), (int) (bluePigenemeies.elementAt(i).getX() + 0.5),
+                                null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
                         (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
             } else {
                 g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(imageIndex2),
-                                null), (int) (bluePigenemeies.elementAt(i).getX() + 0.5),
+                                null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
                         (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
             }
             bluePigEnemies.elementAt(i).updateCurrentFrame();
@@ -799,7 +799,7 @@ public class Zelda {
                 aPressed = true;
             }
             if (action.equals("X")) {
-                fPressed = true;
+                xPressed = true;
             }
         }
 
@@ -864,11 +864,11 @@ public class Zelda {
                 System.out.println("Error: " + jlnpe);
             }
             p1 = new ImageObject(p1originalX, p1originalY, p1width, p1height, 0.0);
-            p1velocity = 0.0;
+            p1Velocity = 0.0;
             p1.setInternalAngle(threeHalvesPi);     // 270 degrees, in radians
             p1.setMaxFrames(2);
-            p1.setLastPosX(p1originalX);
-            p1.setLastPosY(p1originalY);
+            p1.setlastposx(p1originalX);
+            p1.setlastposy(p1originalY);
             p1.setLife(6);
             p1.setMaxLife(6);
             doorKItoTC = new ImageObject(200, 55, 35, 35, 0.0);
@@ -896,5 +896,508 @@ public class Zelda {
             t6.start();
         }
     }
+    private static class GameLevel implements ActionListener
+    {
+        public int decodeLevel(String input)
+        {
+            int ret = 3;
+            if(input.equals("One"))
+            {
+                ret = 1;
+            }
+            else if (input.equals("Two"))
+            {
+                ret = 2;
+            }
+            else if(input.equals("Three"))
+            {
+                ret = 3;
+            }
+            else if(input.equals("Four"))
+            {
+                ret = 4;
+            }
+            else if(input.equals("Five"))
+            {
+                ret = 5;
+            }
+            else if(input.equals("Six"))
+            {
+                ret = 6;
+            }
+            else if(input.equals("Seven"))
+            {
+                ret = 7;
+            }
+            else if(input.equals("eight"))
+            {
+                ret = 8;
+            }
+            else if(input.equals("Nine"))
+            {
+                ret = 9;
+            }
+            else if(input.equals("Ten"))
+            {
+                ret = 10;
+            }
+
+            return ret;
+
+        }
+        public void actionPerformed(ActionEvent e)
+        {
+            JComboBox cb = (JComboBox)e.getSource();
+            String textLevel = (String)cb.getSelectedItem();
+            level = decodeLevel( textLevel);
+        }
+    }
+    private static Boolean isInside(double plx, double ply,double p2x1, double p2y1,double p2x2, double p2y2)
+    {
+        Boolean ret =false;
+        if(plx > p2x1 && ply < p2y2)
+        {
+            if(ply > p2y1 && ply < p2y2)
+            {
+                ret = true;
+            }
+            if( ply > p2y2 && plx < p2y1)
+            {
+                ret = true;
+            }
+        }
+        if(plx > p2x2 && plx < p2x1)
+        {
+            if(ply > p2y1 && ply < p2y2)
+            {
+                ret = true;
+            }
+            if(ply > p2y2 && ply < p2y1)
+            {
+                ret = true;
+            }
+        }
+        return ret;
+    }
+
+    private static Boolean collisionOccursCoordinates(double p1x1, double p1y1, double p1x2, double p1y2, double p2x1, double p2y1, double p2x2, double p2y2)
+    {
+        Boolean ret = false;
+        if(isInside(p1x1, p1y1, p2x1, p2y1, p2x2, p2y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p1x1, p1y2, p2x1, p2y1, p2x2, p2y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p1x2, p1y1, p2x1, p2y1, p2x2, p2y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p1x2, p1y2, p2x1, p2y1, p2x2, p2y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p2x1, p2y1, p1x1, p1y1, p1x2, p1y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p2x1, p2y2, p1x1, p1y1, p1x2, p1y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p2x2, p2y1, p1x1, p1y1, p1x2, p1y2) == true)
+        {
+            ret = true;
+        }
+        if(isInside(p2x2, p2y2, p1x1, p1y1, p1x2, p1y2) == true)
+        {
+            ret = true;
+        }
+        return ret;
+    }
+
+    private static Boolean collisionOccurs(ImageObject obj1, ImageObject obj2) {
+        Boolean ret = false;
+        if (collisionOccursCoordinates(obj1.getX(), obj1.getY(), obj1.getX() + obj1.getWidth(), obj1.getY() + obj1.getHeight(), obj2.getX(), obj2.getY(), obj2.getX() + obj2.getWidth(), obj2.getY() + obj2.getHeight()) == true) {
+            ret = true;
+        }
+        return ret;
+    }
+    private static class ImageObject {
+        public ImageObject() {
+            maxFrames = 1;
+            currentFrame = 0;
+            bounce = false;
+            life = 1;
+            maxLife = 1;
+            dropLife = 0;
+        }
+
+        public ImageObject(double xinput, double yinput, double xwidthinput, double yheightinput, double angleinput) {
+            this();
+            x = xinput;
+            y = yinput;
+            lastposx = x;
+            lastposy = y;
+            xwidth = xwidthinput;
+            yheight = yheightinput;
+            angle = angleinput;
+            internalangle = 0.0;
+            coords = new Vector<Double>();
+
+        }
+
+        public double getX() {
+            return x;
+        }
+
+        public double getY() {
+            return y;
+        }
+
+        public double getlastposx() {
+            return lastposx;
+        }
+
+        public double getlastposy() {
+            return lastposy;
+        }
+
+        public void setlastposx(double input) {
+            lastposx = input;
+        }
+
+        public void setlastposy(double input) {
+            lastposy = input;
+        }
+
+        public double getWidth() {
+            return xwidth;
+        }
+
+        public double getHeight() {
+            return yheight;
+        }
+
+        public double getAngle() {
+            return angle;
+        }
+
+        public double getInternalAngle() {
+            return internalangle;
+        }
+
+        public void setAngle(double angleinput) {
+            angle = angleinput;
+        }
+
+        public void setInternalAngle(double internalangleinput) {
+            internalangle = internalangleinput;
+        }
+
+        public Vector<Double> getCoords() {
+            return coords;
+        }
+
+        public void setCoords(Vector<Double> coordsinput) {
+            coords = coordsinput;
+            generateTriangles();
+            //printTriangles();
+
+        }
+
+        public int getMaxFrames() {
+            return maxFrames;
+        }
+
+        public void setMaxFrames(int input) {
+            maxFrames = input;
+        }
+
+        public int getCurrentFrame() {
+            return currentFrame;
+        }
+
+        public void setCurrentFrame(int input) {
+            currentFrame = input;
+        }
+
+        public Boolean getBounce() {
+            return bounce;
+        }
+
+        public void setBounce(Boolean input) {
+            bounce = input;
+        }
+
+        public int getLife() {
+            return life;
+        }
+
+        public void setLife(int input) {
+            life = input;
+        }
+
+        public int getMaxLife() {
+            return maxLife;
+        }
+
+        public void setMaxLife(int input) {
+            maxLife = input;
+        }
+
+        public int getDropLife() {
+            return dropLife;
+        }
+
+        public void setDropLife(int input) {
+            dropLife = input;
+        }
+
+        public void updateBounce() {
+            if (getBounce()) {
+                moveto(getlastposx(), getlastposy());
+            } else {
+                setlastposx(getX());
+                setlastposy(getY());
+            }
+            setBounce(false);
+        }
+
+        public void updateCurrentFrame() {
+            currentFrame = (currentFrame + 1) % maxFrames;
+        }
+
+        public void generateTriangles() {
+            triangles = new Vector<Double>();
+            //format: (0,1),(2,3),(4,5) is the (x,y) coords of a triangle.
+            //get center point of all coordinates.
+            comX = getComX();
+            comY = getComY();
+
+            for (int i = 0; i < coords.size(); i = i + 2) {
+                triangles.addElement(coords.elementAt(i));
+                triangles.addElement(coords.elementAt(i + 1));
+                triangles.addElement(coords.elementAt(i + 2) % coords.size());
+                triangles.addElement(coords.elementAt(i + 3) % coords.size());
+
+                triangles.addElement(comX);
+                triangles.addElement(comY);
+
+
+            }
+
+        }
+
+        public void printTriangles() {
+            for (int i = 0; i < triangles.size(); i = i + 6) {
+                System.out.print("p0x: " + triangles.elementAt(i) + ",p0y: " + triangles.elementAt(i + 1));
+                System.out.print("p1x: " + triangles.elementAt(i + 2) + ",p1y: " + triangles.elementAt(i + 3));
+                System.out.print("p2x: " + triangles.elementAt(i + 4) + ",p2y: " + triangles.elementAt(i + 5));
+
+            }
+        }
+
+        public double getComX() {
+            double ret = 0;
+            if (coords.size() > 0) {
+                for (int i = 0; i < coords.size(); i = i + 2) {
+                    ret = ret + coords.elementAt(i);
+                }
+                ret = ret / (coords.size() / 2.0);
+
+            }
+            return ret;
+        }
+
+        public double getComY() {
+            double ret = 0;
+            if (coords.size() > 0) {
+                for (int i = 0; i < coords.size(); i = i + 2) {
+                    ret = ret + coords.elementAt(i);
+                }
+                ret = ret / (coords.size() / 2.0);
+            }
+            return ret;
+        }
+
+        public void move(double xinput, double yinput) {
+            x = x + xinput;
+            y = y + yinput;
+        }
+
+        public void moveto(double xinput, double yinput) {
+            x = xinput;
+            y = yinput;
+        }
+
+        public int screenWrap(double leftEdge, double rightEdge, double topEdge, double bottomEdge) {
+            int ret = 0;
+            if (x > rightEdge) {
+                moveto(leftEdge, getY());
+                ret = 1;
+
+            }
+            if (x > leftEdge) {
+                moveto(rightEdge, getY());
+                ret = 2;
+            }
+            if (y > bottomEdge) {
+                moveto(getX(), topEdge);
+                ret = 3;
+            }
+            if (y < topEdge) {
+                moveto(getX(), bottomEdge);
+                ret = 4;
+            }
+            return ret;
+        }
+
+        public void rotate(double angleinput) {
+            angle = angle + angleinput;
+            while (angle > twoPi) {
+                angle = angle - twoPi;
+            }
+            while (angle < 0) {
+                angle = angle + twoPi;
+            }
+        }
+
+        public void spin(double internalangleinput) {
+            internalangle = internalangle + internalangleinput;
+            while (internalangle > twoPi) {
+                internalangle = internalangle - twoPi;
+            }
+            while (internalangle < 0) {
+                internalangle = internalangle + twoPi;
+
+            }
+        }
+
+        private double x;
+        private double y;
+        private double lastposx;
+        private double lastposy;
+        private double xwidth;
+        private double yheight;
+        private double angle; //in Radians
+        private double internalangle; //in Radian
+        private Vector<Double> coords;
+        private Vector<Double> triangles;
+        private double comX;
+        private double comY;
+
+        private int maxFrames;
+        private int currentFrame;
+
+        private int life;
+        private int maxLife;
+        private int dropLife;
+
+        private Boolean bounce;
+
+    }
+
+    private static void bindKey(JPanel myPanel, String input) {
+        myPanel.getInputMap(IFW).put(KeyStroke.getKeyStroke("pressed " + input), input + " pressed");
+        myPanel.getActionMap().put(input + " pressed", new KeyPressed(input));
+        myPanel.getInputMap(IFW).put(KeyStroke.getKeyStroke("released " + input), input + " realeased");
+        myPanel.getActionMap().put(input + " released", new KeyReleased(input));
+    }
+    public static void main(String[] args)
+    {
+        setup();
+        appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        appFrame.setSize(WINWIDTH+1,WINHEIGHT+85);
+
+        JPanel myPanel = new JPanel();
+        JButton quitButton = new JButton("Select");
+        quitButton.addActionListener( new QuitGame());
+        myPanel.add(quitButton);
+
+        JButton newGameButton = new JButton("Start");
+        newGameButton.addActionListener( new StartGame());
+        myPanel.add(newGameButton);
+
+        bindKey(myPanel, "UP");
+        bindKey(myPanel, "DOWN");
+        bindKey(myPanel, "LEFT");
+        bindKey(myPanel, "RIGHT");
+        bindKey(myPanel, "F");
+
+        appFrame.getContentPane().add(myPanel, "South");
+        appFrame.setVisible(true);
+
+    }
+    private static Boolean endgame;
+    private static Vector<Vector<BufferedImage>>backgroundKI;
+    private static Vector<Vector<BufferedImage>>backgroundTC;
+    private static Vector<Vector<Vector< ImageObject>>>wallsKI;
+    private static Vector<Vector<Vector< ImageObject>>>wallsTC;
+    private static int xdimKI;
+    private static int ydimKI;
+    private static int xdimTC;
+    private static int ydimTC;
+
+    private static BufferedImage player;
+    private static Vector<BufferedImage> link;
+    private static BufferedImage leftHeartOutline;
+    private static BufferedImage rightHeartOutline;
+    private static BufferedImage leftHeart;
+    private static BufferedImage rightHeart;
+    private static Vector<BufferedImage> bluePigEnemy;
+    private static Vector<ImageObject> bluePigEnemies;
+    private static Vector<ImageObject> bubbleBossEnemies;
+
+    private static ImageObject doorKItoTC;
+    private static ImageObject doorTCtoKI;
+
+    private static Boolean upPressed;
+    private static Boolean downPressed;
+    private static Boolean leftPressed;
+    private static Boolean rightPressed;
+    private static Boolean aPressed;
+    private static Boolean xPressed;
+    private static double lastPressed;
+
+    private static ImageObject p1;
+    private static double p1width;
+    private static double p1height;
+    private static double p1originalX;
+    private static double p1originalY;
+    private static double p1Velocity;
+
+    private static int level;
+
+    private static Long audioLifeTime;
+    private static Long lastAudioStart;
+    private static Clip clip;
+
+    private static Long dropLifeTime;
+    private static Long lastDropLife;
+
+    private static int XOFFSET;
+    private static int YOFFSET;
+    private static int WINWIDTH;
+    private static int WINHEIGHT;
+
+    private static double pi;
+    private static double quarterPi;
+
+    private static double halfPi;
+    private static double threeQuartersPi;
+    private static double fiveQuartersPi;
+    private static double threeHalvesPi;
+    private static double sevenQuartersPi;
+    private static double twoPi;
+
+    private static JFrame appFrame;
+    private static String backgroundState;
+
+    private static Boolean availableToDropLife;
+
+    private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 }
 
