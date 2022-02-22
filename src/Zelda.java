@@ -67,7 +67,7 @@ public class Zelda {
             for (int i = 0; i < ydimKI; i++) {
                 Vector<BufferedImage> temp = new Vector<BufferedImage>();
                 for (int j = 0; j < xdimKI; j++) {
-                    BufferedImage tempImg = ImageIO.read(new File("intro1.png"));
+                    BufferedImage tempImg = ImageIO.read(new File("blank.png"));
                     temp.addElement(tempImg);
                 }
                 backgroundKI.addElement(temp);
@@ -746,10 +746,58 @@ public class Zelda {
         Graphics2D g2D = (Graphics2D) g;
 
         for (int i = 0; i < bluePigEnemies.size(); i++) {
-            enemiesDrawHelper(g2D, i, 0.0, 6, 7);
-            enemiesDrawHelper(g2D, i, pi, 4, 5);
-            enemiesDrawHelper(g2D, i, halfPi, 2, 3);
-            enemiesDrawHelper(g2D, i, threeHalvesPi, 0, 1);
+            //enemiesDrawHelper(g2D, i, 0.0, 6, 7);
+            //enemiesDrawHelper(g2D, i, pi, 4, 5);
+            //enemiesDrawHelper(g2D, i, halfPi, 2, 3);
+            //enemiesDrawHelper(g2D, i, threeHalvesPi, 0, 1);
+            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - 0.0) < 1.0) {
+                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(6),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                } else {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(7),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                }
+                bluePigEnemies.elementAt(i).updateCurrentFrame();
+            }
+            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - pi) < 1.0) {
+                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(4),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                } else {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(5),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                }
+                bluePigEnemies.elementAt(i).updateCurrentFrame();
+            }
+            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - halfPi) < 1.0) {
+                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(2),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                } else {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(3),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                }
+                bluePigEnemies.elementAt(i).updateCurrentFrame();
+            }
+            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - threeHalvesPi) < 1.0) {
+                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(0),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                } else {
+                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(1),
+                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
+                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
+                }
+                bluePigEnemies.elementAt(i).updateCurrentFrame();
+            }
         }
     }
 
