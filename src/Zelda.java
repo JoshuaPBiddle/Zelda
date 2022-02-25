@@ -33,15 +33,16 @@ import javax.sound.sampled.Clip;
 
 public class Zelda {
     public Zelda() {
-
+        setup();
     }
 
     public static void setup() {
+        System.out.println("setup");
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
         XOFFSET = 0;
         YOFFSET = 40;
-        WINWIDTH = 500;
-        WINHEIGHT = 500;
+        WINWIDTH = 400;
+        WINHEIGHT = 420;
         pi = 3.14159265358979;
         quarterPi = 0.25 * pi;
         halfPi = 0.5 * pi;
@@ -67,6 +68,7 @@ public class Zelda {
             for (int i = 0; i < ydimKI; i++) {
                 Vector<BufferedImage> temp = new Vector<BufferedImage>();
                 for (int j = 0; j < xdimKI; j++) {
+                    System.out.println("Reading file blank.png");
                     BufferedImage tempImg = ImageIO.read(new File("blank.png"));
                     temp.addElement(tempImg);
                 }
@@ -88,6 +90,7 @@ public class Zelda {
                             fileName = fileName + "0";
                         }
                         fileName = fileName + i + ".png";
+                        System.out.println("Reading file " + fileName);
                         backgroundKI.elementAt(i).set(j, ImageIO.read(new File(fileName)));
                     }
                 }
@@ -148,6 +151,7 @@ public class Zelda {
             for (int i = 0; i < ydimTC; i++) {
                 Vector<BufferedImage> temp = new Vector<BufferedImage>();
                 for (int j = 0; j < xdimTC; j++) {
+                    System.out.println("Reading file blank.png");
                     BufferedImage tempImg = ImageIO.read(new File("blank.png"));
                     temp.addElement(tempImg);
                 }
@@ -178,6 +182,7 @@ public class Zelda {
                             fileName = fileName + "0";
                         }
                         fileName = fileName + i + ".png";
+                        System.out.println("Reading file " + fileName);
                         backgroundTC.elementAt(i).set(j, ImageIO.read(new File(fileName)));
                     }
                 }
@@ -196,34 +201,51 @@ public class Zelda {
             player = ImageIO.read(new File("link00.png"));
 
             link = new Vector<BufferedImage>();
-            for (int i = 0; i < 72; i++) {
+            for (int i = 0; i < 8; i++) {   // TODO was i < 72 ? why??
                 if (i < 10) {
                     String fileName = "link0" + i + ".png";
+                    System.out.println("Reading file " + fileName);
                     link.addElement(ImageIO.read(new File(fileName)));
                 } else {
                     String fileName = "link" + i + ".png";
+                    System.out.println("Reading file " + fileName);
                     link.addElement(ImageIO.read(new File(fileName)));
                 }
             }
 
+            System.out.println("Building");
             bluePigEnemies = new Vector<ImageObject>();
+            if (bluePigEnemies == null) {
+                System.out.println("Vector is null");
+            } else if (bluePigEnemies.isEmpty()) {
+                System.out.println("Vector is empty");
+            }
             bluePigEnemy = new Vector<BufferedImage>();
-            bluePigEnemy.addElement(ImageIO.read(new File("BPB1.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPB2.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPF1.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPF2.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPL1.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPL2.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPR1.png")));
-            bluePigEnemy.addElement(ImageIO.read(new File("BPR2.png")));
+            System.out.println("Reading BP files");
+            try {
+                bluePigEnemy.addElement(ImageIO.read(new File("BPB1.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPB2.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPF1.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPF2.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPL1.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPL2.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPR1.png")));
+                bluePigEnemy.addElement(ImageIO.read(new File("BPR2.png")));
+            } catch (Exception e) {
+                System.out.println("Error adding enemy: " + e);
+            }
 
             bubbleBossEnemies = new Vector<ImageObject>();
+            System.out.println("Reading file heartOutlineLeft.png");
             leftHeartOutline = ImageIO.read(new File("heartOutlineLeft.png"));
+            System.out.println("Reading file heartOutlineRight.png");
             rightHeartOutline = ImageIO.read(new File("heartOutlineRight.png"));
+            System.out.println("Reading file heartLeft.png");
             leftHeart = ImageIO.read(new File("heartLeft.png"));
+            System.out.println("Reading file heartRight.png");
             rightHeart = ImageIO.read(new File("heartRight.png"));
         } catch (IOException ioe) {
-
+            System.out.println("Exception: " + ioe);
         }
     }
 
@@ -282,6 +304,7 @@ public class Zelda {
         }
     }
 
+    /*
     private static String bgWrap(String input, int wrap) {
         String ret = input;
         if (wrap == 0) {
@@ -352,6 +375,8 @@ public class Zelda {
         return ret;
     }
 
+     */
+
     private static class PlayerMover implements Runnable {
         public PlayerMover() {
             velocityStep = 3;
@@ -409,12 +434,15 @@ public class Zelda {
 
                 p1.updateBounce();
                 p1.move(p1Velocity * Math.cos(p1.getInternalAngle()), p1Velocity * Math.sin(p1.getInternalAngle()));
-                int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
-                backgroundState = bgWrap(backgroundState, wrap);
-                if (wrap != 0) {
-                    clearEnemies();
-                    generateEnemies(backgroundState);
-                }
+                //int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
+                //System.out.println(backgroundState);
+                //backgroundState = bgWrap(backgroundState, wrap);
+                //backgroundState = bgWrap(backgroundState);
+                //if (wrap != 0) {
+                    //System.out.println("Clearing enemies; PlayerMover");
+                    //clearEnemies();
+                    //generateEnemies(backgroundState);
+                //}
             }
         }
 
@@ -428,8 +456,14 @@ public class Zelda {
 
     private static void generateEnemies(String backgroundState) {
         if (backgroundState.substring(0, 6).equals("KI0809")) {
-            bluePigEnemies.addElement(new ImageObject(20, 90, 33, 33, 0.0));
-            bluePigEnemies.addElement(new ImageObject(250, 230, 33, 33, 0.0));
+            try {
+                //bluePigEnemies.addElement(new ImageObject(20, 90, 33, 33, 0.0));
+                //bluePigEnemies.addElement(new ImageObject(250, 230, 33, 33, 0.0));
+                bluePigEnemies.addElement(new ImageObject(80, 170, 33, 33, 0.0));
+                bluePigEnemies.addElement(new ImageObject(220, 170, 33, 33, 0.0));
+            } catch (Exception e) {
+                System.out.println("Error generating enemies: " + e);
+            }
         }
         for (int i = 0; i < bluePigEnemies.size(); i++) {
             bluePigEnemies.elementAt(i).setMaxFrames(25);
@@ -527,7 +561,8 @@ public class Zelda {
                 if (backgroundState.substring(0, 6).equals("KIO511")) {
                     if (collisionOccurs(p1, doorKItoTC)) {
                         p1.moveto(p1originalX, p1originalY);
-                        backgroundState = "TC0305";
+                        //backgroundState = "TC0305";
+                        backgroundState = "d1";
                         clip.stop();
                         playAudio(backgroundState);
                     }
@@ -550,6 +585,7 @@ public class Zelda {
 
                 // check player against enemies
                 for (int i = 0; i < bluePigEnemies.size(); i++) {
+                    //System.out.println("Array size: " + bluePigEnemies.size());
                     if (collisionOccurs(p1, bluePigEnemies.elementAt(i))) {
                         //System.out.println("Still Colliding: " + i + ", " + System.currentTimeMillis());
                         p1.setBounce(true);
@@ -621,17 +657,17 @@ public class Zelda {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2D = (Graphics2D) g;
 
-        if (backgroundState.substring(0, 2).equals("KI")) {
+        if (backgroundState.startsWith("KI")) {
             int i = Integer.parseInt(backgroundState.substring(4, 6));
             int j = Integer.parseInt(backgroundState.substring(2, 4));
             if (i < backgroundKI.size()) {
                 if (j < backgroundKI.elementAt(i).size()) {
-                    g2D.drawImage(backgroundKI.elementAt(i).elementAt(j), XOFFSET, YOFFSET, null);
+                    g2D.drawImage(backgroundKI.elementAt(i).elementAt(j), XOFFSET - 20, YOFFSET - 30, null);
                 }
             }
         }
 
-        if (backgroundState.substring(0, 2).equals("TC")) {
+        if (backgroundState.startsWith("TC")) {
             int i = Integer.parseInt(backgroundState.substring(4, 6));
             int j = Integer.parseInt(backgroundState.substring(2, 4));
             if (i < backgroundKI.size()) {
@@ -746,58 +782,10 @@ public class Zelda {
         Graphics2D g2D = (Graphics2D) g;
 
         for (int i = 0; i < bluePigEnemies.size(); i++) {
-            //enemiesDrawHelper(g2D, i, 0.0, 6, 7);
-            //enemiesDrawHelper(g2D, i, pi, 4, 5);
-            //enemiesDrawHelper(g2D, i, halfPi, 2, 3);
-            //enemiesDrawHelper(g2D, i, threeHalvesPi, 0, 1);
-            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - 0.0) < 1.0) {
-                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(6),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                } else {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(7),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                }
-                bluePigEnemies.elementAt(i).updateCurrentFrame();
-            }
-            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - pi) < 1.0) {
-                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(4),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                } else {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(5),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                }
-                bluePigEnemies.elementAt(i).updateCurrentFrame();
-            }
-            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - halfPi) < 1.0) {
-                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(2),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                } else {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(3),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                }
-                bluePigEnemies.elementAt(i).updateCurrentFrame();
-            }
-            if (Math.abs(bluePigEnemies.elementAt(i).getInternalAngle() - threeHalvesPi) < 1.0) {
-                if (bluePigEnemies.elementAt(i).getCurrentFrame() < bluePigEnemies.elementAt(i).getMaxFrames() / 2) {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(0),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                } else {
-                    g2D.drawImage(rotateImageObject(bluePigEnemies.elementAt(i)).filter(bluePigEnemy.elementAt(1),
-                                    null), (int) (bluePigEnemies.elementAt(i).getX() + 0.5),
-                            (int) (bluePigEnemies.elementAt(i).getY() + 0.5), null);
-                }
-                bluePigEnemies.elementAt(i).updateCurrentFrame();
-            }
+            enemiesDrawHelper(g2D, i, 0.0, 6, 7);
+            enemiesDrawHelper(g2D, i, pi, 4, 5);
+            enemiesDrawHelper(g2D, i, halfPi, 2, 3);
+            enemiesDrawHelper(g2D, i, threeHalvesPi, 0, 1);
         }
     }
 
@@ -906,6 +894,7 @@ public class Zelda {
             backgroundState = "KI0809";
             availableToDropLife = true;
             try {
+                System.out.println("Clearing enemies; StartGame");
                 clearEnemies();
                 generateEnemies(backgroundState);
             } catch (java.lang.NullPointerException jlnpe) {
@@ -1358,7 +1347,7 @@ public class Zelda {
     {
         setup();
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        appFrame.setSize(WINWIDTH+1,WINHEIGHT+85);
+        appFrame.setSize(WINWIDTH,WINHEIGHT);
 
         JPanel myPanel = new JPanel();
         JButton quitButton = new JButton("Select");
@@ -1448,4 +1437,3 @@ public class Zelda {
 
     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 }
-

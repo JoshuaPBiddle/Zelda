@@ -5,64 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffbe3908-4aef-4485-81b8-32fbace7a9e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BPB1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPB2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPF1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPF2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPL1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPL2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPR1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BPR2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0510.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0511.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0610.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0611.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0710.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0711.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0809.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KI0810.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0101.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0103.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0105.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0201.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0202.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0203.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0204.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0205.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0206.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0301.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0302.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0303.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0304.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0305.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0402.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0403.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0502.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0503.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0600.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0601.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0602.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TC0603.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/heartLeft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/heartOutlineLeft.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/heartOutlineRight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/heartRight.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hurt.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/link07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blank.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KI0809.png" beforeDir="false" afterPath="$PROJECT_DIR$/KI0809.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TC0002.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0002.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TC0003.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0003.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TC0004.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0004.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TC0101.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0101.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TC0103.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0103.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TC0105.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0105.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/d1.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d2.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d3.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d4.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d5.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d6.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$AudioLooper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$AudioLooper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$CollisionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$CollisionChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$GameLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$GameLevel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$HealthTracker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$HealthTracker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$ImageObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyPressed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$KeyReleased.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$PlayerMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$QuitGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
     </list>
@@ -106,12 +76,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jpbid\IdeaProjects\Zelda" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jpbid\IdeaProjects\Zelda" />
       <recent name="C:\Users\jpbid\Zelda" />
@@ -145,7 +119,13 @@
       <workItem from="1645414101851" duration="3220000" />
       <workItem from="1645418126522" duration="4655000" />
       <workItem from="1645492572437" duration="265000" />
-      <workItem from="1645492864991" duration="1463000" />
+      <workItem from="1645492864991" duration="1618000" />
+      <workItem from="1645495331948" duration="2616000" />
+      <workItem from="1645501141379" duration="367000" />
+      <workItem from="1645557250088" duration="115000" />
+      <workItem from="1645656081080" duration="11128000" />
+      <workItem from="1645723652581" duration="2259000" />
+      <workItem from="1645813874114" duration="326000" />
     </task>
     <servers />
   </component>
