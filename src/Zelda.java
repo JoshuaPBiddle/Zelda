@@ -427,6 +427,9 @@ public class Zelda {
                             p1.setInternalAngle(0.0);
                         }
                     }
+                    if (mPresesd) {
+                        backgroundState = "underWorldMap";
+                    }
                 } else {
                     p1Velocity = 0.0;
                     p1.setInternalAngle(threeHalvesPi);
@@ -1395,6 +1398,7 @@ public class Zelda {
     private static Boolean rightPressed;
     private static Boolean aPressed;
     private static Boolean xPressed;
+    private static Boolean mPressed;
     private static double lastPressed;
 
     private static ImageObject p1;
