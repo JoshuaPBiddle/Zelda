@@ -304,7 +304,7 @@ public class Zelda {
         }
     }
 
-    /*
+
     private static String bgWrap(String input, int wrap) {
         String ret = input;
         if (wrap == 0) {
@@ -375,7 +375,7 @@ public class Zelda {
         return ret;
     }
 
-     */
+
 
     private static class PlayerMover implements Runnable {
         public PlayerMover() {
@@ -432,17 +432,15 @@ public class Zelda {
                     p1.setInternalAngle(threeHalvesPi);
                 }
 
-                p1.updateBounce();
-                p1.move(p1Velocity * Math.cos(p1.getInternalAngle()), p1Velocity * Math.sin(p1.getInternalAngle()));
-                //int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
-                //System.out.println(backgroundState);
-                //backgroundState = bgWrap(backgroundState, wrap);
-                //backgroundState = bgWrap(backgroundState);
-                //if (wrap != 0) {
-                    //System.out.println("Clearing enemies; PlayerMover");
-                    //clearEnemies();
-                    //generateEnemies(backgroundState);
-                //}
+//                p1.updateBounce();
+//                p1.move(p1Velocity * Math.cos(p1.getInternalAngle()), p1Velocity * Math.sin(p1.getInternalAngle()));
+//                int wrap = p1.screenWrap(XOFFSET, XOFFSET + WINWIDTH, YOFFSET, YOFFSET + WINHEIGHT);
+//                System.out.println(backgroundState);
+//                backgroundState = bgWrap(backgroundState, wrap);
+//                if (wrap != 0) {
+//                    clearEnemies();
+//                    generateEnemies(backgroundState);
+//                }
             }
         }
 

@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffbe3908-4aef-4485-81b8-32fbace7a9e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blank.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/underWorldMap.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KI0809.png" beforeDir="false" afterPath="$PROJECT_DIR$/KI0809.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TC0002.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0002.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TC0003.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0003.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TC0004.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0004.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TC0101.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0101.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TC0103.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0103.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TC0105.png" beforeDir="false" afterPath="$PROJECT_DIR$/TC0105.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/d1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/d2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/d3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/d4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/d5.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/d6.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/one.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$Animate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$AudioLooper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$AudioLooper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$CollisionChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$CollisionChecker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$EnemyMover.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$GameLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$GameLevel.class" afterDir="false" />
@@ -35,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda$StartGame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zelda/Zelda.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zelda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temple_BottleGrotto.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +111,9 @@
       <workItem from="1645656081080" duration="11128000" />
       <workItem from="1645723652581" duration="2259000" />
       <workItem from="1645813874114" duration="326000" />
+      <workItem from="1645827381445" duration="1447000" />
+      <workItem from="1645911638522" duration="520000" />
+      <workItem from="1645918307162" duration="478000" />
     </task>
     <servers />
   </component>
